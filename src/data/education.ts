@@ -10,7 +10,7 @@ export const education: EducationItem[] = [
     institution: "University of Twente",
     location: "Netherlands",
     degree: "MSc. Geoinformation Science and Earth Observation",
-    image: "/schools/university_of_wente.jpg",
+    image: "/schools/university_of_twente.jpg",
   },
   {
     institution: "Kwame Nkrumah University of Science and Technology (KNUST)",
@@ -22,7 +22,7 @@ export const education: EducationItem[] = [
     institution: "St. Peter's Secondary School",
     location: "Ghana",
     degree: "Secondary Education",
-    image: "/schools/st-peters-SHS.jpg",
+    image: "/schools/St-Peters-SHS.jpg",
   },
   // {
   //   institution: "NDC Leadership & Political Training",
