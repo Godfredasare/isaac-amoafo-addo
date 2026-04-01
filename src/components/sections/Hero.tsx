@@ -60,7 +60,7 @@ export default function Hero() {
             <div className="relative">
               <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 sm:border-6 border-white shadow-2xl">
                 <img
-                  src="/profile.jpg"
+                  src="/profile.jpeg"
                   alt="Isaac Amoafo Addo"
                   className="w-full h-full object-cover"
                 />
