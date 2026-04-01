@@ -3,12 +3,20 @@
 import { useState } from 'react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, X } from "lucide-react"
+import { ArrowLeft, X, ChevronDown, ChevronUp } from "lucide-react"
 import Link from "next/link"
 import { galleryPageCategories } from "@/data/gallery"
 
 export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null)
+  const [expandedCategories, setExpandedCategories] = useState<Record<number, boolean>>({})
+
+  const toggleCategory = (index: number) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }))
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -49,37 +57,64 @@ export default function GalleryPage() {
           </div>
 
           {/* Gallery Categories */}
-          {galleryPageCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-12">
-              <div className="mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">{category.title}</h2>
-                <p className="text-gray-600">{category.description}</p>
+          {galleryPageCategories.map((category, categoryIndex) => {
+            const isExpanded = expandedCategories[categoryIndex]
+            const displayImages = isExpanded ? category.images : category.images.slice(0, 10)
+            const hasMoreImages = category.images.length > 10
+
+            return (
+              <div key={categoryIndex} className="mb-12">
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">{category.title}</h2>
+                  <p className="text-gray-600">{category.description}</p>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                  {displayImages.map((image, imageIndex) => (
+                    <Card 
+                      key={imageIndex}
+                      className="border border-gray-100 hover:border-green-200 hover:shadow-lg transition-all duration-300 overflow-hidden cursor-pointer group"
+                      onClick={() => setSelectedImage({ 
+                        src: `/gallery/${category.folder}/${image}`, 
+                        alt: `${category.title} - Image ${imageIndex + 1}` 
+                      })}
+                    >
+                      <CardContent className="p-0">
+                        <div className="relative aspect-square">
+                          <img
+                            src={`/gallery/${category.folder}/${image}`}
+                            alt={`${category.title} - Image ${imageIndex + 1}`}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+                {hasMoreImages && (
+                  <div className="mt-4 text-center">
+                    <Button
+                      variant="outline"
+                      className="border-green-600 text-green-600 hover:bg-green-50"
+                      onClick={() => toggleCategory(categoryIndex)}
+                    >
+                      {isExpanded ? (
+                        <>
+                          <ChevronUp className="w-4 h-4 mr-2" />
+                          Show Less
+                        </>
+                      ) : (
+                        <>
+                          <ChevronDown className="w-4 h-4 mr-2" />
+                          Show All ({category.images.length - 10} more)
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                )}
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {category.images.map((image, imageIndex) => (
-                  <Card 
-                    key={imageIndex}
-                    className="border border-gray-100 hover:border-green-200 hover:shadow-lg transition-all duration-300 overflow-hidden cursor-pointer group"
-                    onClick={() => setSelectedImage({ 
-                      src: `/gallery/${category.folder}/${image}`, 
-                      alt: `${category.title} - Image ${imageIndex + 1}` 
-                    })}
-                  >
-                    <CardContent className="p-0">
-                      <div className="relative aspect-square">
-                        <img
-                          src={`/gallery/${category.folder}/${image}`}
-                          alt={`${category.title} - Image ${imageIndex + 1}`}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </main>
 
