@@ -14,33 +14,76 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Isaac Amoafo Addo | Portfolio",
-  description: "Portfolio of Isaac Amoafo Addo - Manager at CHED Operations Ghana COCOBOD, NDC Parliamentary Candidate for Abetifi Constituency, and Entrepreneur in Agriculture and General Merchandise.",
-  keywords: ["Isaac Amoafo Addo", "Ghana COCOBOD", "NDC", "Abetifi", "Agriculture", "Entrepreneur", "Parliamentary Candidate", "Ghana"],
+  metadataBase: new URL("https://isaacamoakoaddo.com"),
+
+  title: {
+    default: "Isaac Amoafo Addo | COCOBOD Manager & Agricultural Development Leader",
+    template: "%s | Isaac Amoafo Addo",
+  },
+
+  description:
+    "Isaac Amoafo Addo is a Manager at CHED Operations, Ghana COCOBOD, an agricultural development expert, entrepreneur, and public service professional.",
+
+  keywords: [
+    "Isaac Amoafo Addo",
+    "Isaac Amoafo",
+    "COCOBOD Ghana",
+    "CHED Operations",
+    "Agricultural Development Ghana",
+    "Ghana Agriculture Expert",
+    "Abetifi Constituency",
+    "Entrepreneur Ghana",
+  ],
+
   authors: [{ name: "Isaac Amoafo Addo" }],
+  creator: "Isaac Amoafo Addo",
+
+  alternates: {
+    canonical: "/",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   icons: {
     icon: "/favicon.png",
   },
+
   openGraph: {
-    title: "Isaac Amoafo Addo | Portfolio",
-    description: "Manager at CHED Operations Ghana COCOBOD, NDC Parliamentary Candidate, and Entrepreneur",
+    title: "Isaac Amoafo Addo | COCOBOD Manager & Agricultural Development Leader",
+    description:
+      "Manager at CHED Operations Ghana COCOBOD, agricultural development expert, and entrepreneur.",
+    url: "https://isaacamoakoaddo.com",
+    siteName: "Isaac Amoafo Addo",
+    locale: "en_GH",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png", // add this file
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Isaac Amoafo Addo | Portfolio",
-    description: "Manager at CHED Operations Ghana COCOBOD, NDC Parliamentary Candidate, and Entrepreneur",
+    title: "Isaac Amoafo Addo",
+    description:
+      "COCOBOD Manager, Agricultural Development Expert, and Entrepreneur",
+    images: ["/og-image.png"],
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head></head>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
