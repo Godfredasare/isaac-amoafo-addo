@@ -15,7 +15,7 @@ export default function Politics() {
               <div className="lg:w-1/3">
                 <div className="bg-white rounded-2xl p-6 sm:p-8 text-center shadow-lg border border-green-100">
                   <img 
-                    src="/ndc-logo.png" 
+                    src="/ndc.jpg" 
                     alt="NDC Logo" 
                     width={120} 
                     height={120}
