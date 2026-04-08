@@ -27,7 +27,9 @@ export const metadata: Metadata = {
   keywords: [
     "Isaac Amoafo Addo",
     "Isaac Amoako Addo",
-    "Isaac Amoako",
+    "isaac amoafo addo",
+    "Isaac Amoafo",
+    "Isaac Addo",
     "COCOBOD Ghana",
     "CHED Operations",
     "Agricultural Development Ghana",
