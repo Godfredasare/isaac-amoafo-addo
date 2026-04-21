@@ -34,7 +34,7 @@ export default function Hero() {
                 Learn More
               </a>
               <a
-                href="https://docs.google.com/document/d/1FQSKZm-kxtpgAQPQ-foTrxcehKTZWG51/edit?usp=sharing"
+                href="https://docs.google.com/document/d/1cHIFQGB0YQhFf5z7uKipJ1Gtrwupq7m_/edit?usp=drive_link&ouid=108681032864394007732&rtpof=true&sd=true"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 border-2 border-gray-300 text-gray-700 px-5 sm:px-8 py-3 sm:py-3.5 rounded-full font-medium hover:bg-gray-50 hover:border-gray-400 transition-all text-center text-sm sm:text-base"
